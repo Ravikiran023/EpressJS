@@ -1,0 +1,27 @@
+# .github/workflows/preserve-codeowners.yml
+name: Preserve CODEOWNERS on PR
+
+on:
+  pull_request:
+    branches: [ quality ]   # adjust as needed
+
+jobs:
+  restore-codeowners:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out PR branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Fetch quality branch
+        run: git fetch origin quality
+
+      - name: Restore CODEOWNERS from quality
+        run: |
+          git checkout origin/quality -- .github/CODEOWNERS
+          git diff --quiet || (git commit -m "ci: restore CODEOWNERS from quality" .github/CODEOWNERS)
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
+ 
