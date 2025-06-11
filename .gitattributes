@@ -1,5 +1,2 @@
 .github/CODEOWNERS merge=ours
-git add .gitattributes
-git commit -m "Lock .github/CODEOWNERS via merge=ours on quality"
-git push origin quality
 
