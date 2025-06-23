@@ -4,3 +4,4 @@
 //Test-3 - quality
 //Test-4 - added git attriubtes
 //Test 5
+//Test 6
