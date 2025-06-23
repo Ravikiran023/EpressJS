@@ -5,3 +5,4 @@
 //Test-4 - added git attriubtes
 //Test 5
 //Test 6
+//Test 7 - hotfix test fix
